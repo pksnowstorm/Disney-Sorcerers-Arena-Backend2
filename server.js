@@ -50,10 +50,10 @@ const Spells = mongoose.model("Spells", SpellsSchema);
 
 const ClubSchema = new mongoose.Schema({
     name: String,
-    members: Number,
-    clubExpeditionTier: String,
-    forbiddenDepthsRaidTier: String,
-    siegeOfOlympusTier: String,
+    members: String,
+    clubExpedition: String,
+    forbiddenDepths: String,
+    siegeOfOlympus: String,
     alliance: String,
     contactInfo: String
 });
