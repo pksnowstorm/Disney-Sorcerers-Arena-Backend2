@@ -93,7 +93,7 @@ const Event = mongoose.model("Event", EventSchema);
 app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
-
+app.use(express.urlencoded({extend: true}))
 ///////////////////////////////
 // ROUTES
 ////////////////////////////////
