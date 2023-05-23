@@ -77,6 +77,8 @@ const CharacterSchema = new mongoose.Schema ({
     stone: String,
 })
 
+const Character = mongoose.model("Character", CharacterSchema);
+
 const EventSchema = new mongoose.Schema({
     name: String,
     type: String,
@@ -84,8 +86,6 @@ const EventSchema = new mongoose.Schema({
 });
 
 const Event = mongoose.model("Event", EventSchema);
-
-const Character = mongoose.model("Character", CharacterSchema);
 
 ///////////////////////////////
 // MiddleWare
