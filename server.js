@@ -113,17 +113,6 @@ app.get("/news", async (req, res) => {
     }
 });
 
-// NEWS CREATE ROUTE
-app.post("/news", async (req, res) => {
-    try {
-        // send all people
-        res.json(await News.create(req.body));
-    } catch (error) {
-        //send error
-        res.status(400).json(error);
-    }
-});
-
 // NEWS DELETE ROUTE
 app.delete("/news/:id", async (req, res) => {
     try {
@@ -148,22 +137,22 @@ app.delete("/news/:id", async (req, res) => {
     }
   });
 
-  // Spells INDEX ROUTE
-app.get("/spells", async (req, res) => {
+  // NEWS CREATE ROUTE
+app.post("/news", async (req, res) => {
     try {
         // send all people
-        res.json(await Spells.find({}));
+        res.json(await News.create(req.body));
     } catch (error) {
         //send error
         res.status(400).json(error);
     }
 });
 
-// SPELLS CREATE ROUTE
-app.post("/spells", async (req, res) => {
+  // Spells INDEX ROUTE
+app.get("/spells", async (req, res) => {
     try {
         // send all people
-        res.json(await Spells.create(req.body));
+        res.json(await Spells.find({}));
     } catch (error) {
         //send error
         res.status(400).json(error);
@@ -194,21 +183,22 @@ app.delete("/spells/:id", async (req, res) => {
     }
   });
 
-  // Club INDEX ROUTE
-  app.get("/club", async (req, res) => {
+  // SPELLS CREATE ROUTE
+app.post("/spells", async (req, res) => {
     try {
         // send all people
-        res.json(await Club.find({}));
+        res.json(await Spells.create(req.body));
     } catch (error) {
         //send error
         res.status(400).json(error);
     }
 });
 
-  //Club Create Route
-app.post("/club", async (req, res) => {
+  // Club INDEX ROUTE
+  app.get("/club", async (req, res) => {
     try {
-        res.json(await Club.create(req.body));
+        // send all people
+        res.json(await Club.find({}));
     } catch (error) {
         //send error
         res.status(400).json(error);
@@ -233,6 +223,16 @@ app.put("/club/:id", async (req, res) => {
     }
 })
 
+  //Club Create Route
+  app.post("/club", async (req, res) => {
+    try {
+        res.json(await Club.create(req.body));
+    } catch (error) {
+        //send error
+        res.status(400).json(error);
+    }
+});
+
 //Character Index Route
 app.get("/character", async (req, res) => {
     try {
@@ -241,16 +241,6 @@ app.get("/character", async (req, res) => {
         res.status(400).json(error);
     }
 })
-
-//Character Create Route
-app.post("/character", async (req, res) => {
-    try {
-        res.json(await Character.create(req.body));
-    } catch (error) {
-        //send error
-        res.status(400).json(error);
-    }
-});
 
 //Character Delete Route
 app.delete("/character/:id", async (req, res) =>{
@@ -270,6 +260,17 @@ app.put("/character/:id", async (req, res) => {
     }
 })
 
+//Character Create Route
+app.post("/character", async (req, res) => {
+    try {
+        res.json(await Character.create(req.body));
+    } catch (error) {
+        //send error
+        res.status(400).json(error);
+    }
+});
+
+
 //Event Index Route
 app.get("/event", async (req, res) => {
     try {
@@ -278,16 +279,6 @@ app.get("/event", async (req, res) => {
         res.status(400).json(error);
     }
 })
-
-//Event Create Route
-app.post("/event", async (req, res) => {
-    try {
-        res.json(await Event.create(req.body));
-    } catch (error) {
-        //send error
-        res.status(400).json(error);
-    }
-});
 
 //Event Delete Route
 app.delete("/event/:id", async (req, res) =>{
@@ -306,6 +297,17 @@ app.put("/event/:id", async (req, res) => {
         res.status(400).json(error);
     }
 })
+
+//Event Create Route
+app.post("/event", async (req, res) => {
+    try {
+        res.json(await Event.create(req.body));
+    } catch (error) {
+        //send error
+        res.status(400).json(error);
+    }
+});
+
 
 ///////////////////////////////
 // LISTENER
