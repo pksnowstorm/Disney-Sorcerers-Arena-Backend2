@@ -60,6 +60,33 @@ const ClubSchema = new mongoose.Schema({
 
 const Club = mongoose.model("Club", ClubSchema);
 
+const CharacterSchema = new mongoose.Schema ({
+    name: String,
+    tags: String,
+    basic: String,
+    special1: String,
+    special2: String,
+    passive1: String,
+    passive2: String,
+    pasive3: String,
+    passive4: String,
+    leadership: String,
+    starLevel: String,
+    gearTier: String,
+    farm: String,
+    stone: String,
+})
+
+const EventSchema = new mongoose.Schema({
+    name: String,
+    type: String,
+    requirements: String
+});
+
+const Event = mongoose.model("Event", EventSchema);
+
+const Character = mongoose.model("Character", CharacterSchema);
+
 ///////////////////////////////
 // MiddleWare
 ////////////////////////////////
@@ -201,6 +228,80 @@ app.delete("/club/:id", async (req, res) =>{
 app.put("/club/:id", async (req, res) => {
     try {
         res.join(await Club.findByIdAndUpdate(req.params.id, req.body, {new: true}));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+})
+
+//Character Index Route
+app.get("/character", async (req, res) => {
+    try {
+        res.join(await Character.find({}));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+})
+
+//Character Create Route
+app.post("/character", async (req, res) => {
+    try {
+        res.json(await Character.create(req.body));
+    } catch (error) {
+        //send error
+        res.status(400).json(error);
+    }
+});
+
+//Character Delete Route
+app.delete("/character/:id", async (req, res) =>{
+    try {
+        res.json(await Character.findByIdAndRemove(req.params.id))
+    } catch(error) {
+        res.status(400).json(error)
+    }
+})
+
+//Character Update Route
+app.put("/character/:id", async (req, res) => {
+    try {
+        res.join(await Character.findByIdAndUpdate(req.params.id, req.body, {new: true}));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+})
+
+//Event Index Route
+app.get("/event", async (req, res) => {
+    try {
+        res.join(await Event.find({}));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+})
+
+//Event Create Route
+app.post("/event", async (req, res) => {
+    try {
+        res.json(await Event.create(req.body));
+    } catch (error) {
+        //send error
+        res.status(400).json(error);
+    }
+});
+
+//Event Delete Route
+app.delete("/event/:id", async (req, res) =>{
+    try {
+        res.json(await Event.findByIdAndRemove(req.params.id))
+    } catch(error) {
+        res.status(400).json(error)
+    }
+})
+
+//Event Update Route
+app.put("/event/:id", async (req, res) => {
+    try {
+        res.join(await Event.findByIdAndUpdate(req.params.id, req.body, {new: true}));
     } catch (error) {
         res.status(400).json(error);
     }
