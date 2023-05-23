@@ -68,7 +68,7 @@ const CharacterSchema = new mongoose.Schema ({
     special2: String,
     passive1: String,
     passive2: String,
-    pasive3: String,
+    passive3: String,
     passive4: String,
     leadership: String,
     starLevel: String,
